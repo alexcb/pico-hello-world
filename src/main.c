@@ -35,7 +35,6 @@ size_t synth_text( pico_Engine *engine, const char *s, char *buf, int max_sample
 		sum += textRead;
 	}
 
-
 	size_t total_bytes = 0;
 	pico_Int16 n;
 	pico_Int16 type;
@@ -43,6 +42,7 @@ size_t synth_text( pico_Engine *engine, const char *s, char *buf, int max_sample
 		status = pico_getData( *engine, (void*)buf, max_samples/2, &n, &type);
 		buf += n;
 		total_bytes += n;
+		printf("got %d %d %d %d\n", max_samples, status, n, PICO_STEP_BUSY);
 
 		if( status == PICO_STEP_IDLE ) {
 			break;
